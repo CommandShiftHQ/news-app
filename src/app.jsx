@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from './components/card';
+import articles from './articles.json';
 
 class App extends React.Component {
   render() {
@@ -8,6 +10,17 @@ class App extends React.Component {
           <h1>The News</h1>
         </header>
         <main>
+          {articles.map((article) => {
+            return (
+              <Card
+                key={article.id}
+                title={article.fields.headline}
+                blurb={article.fields.trailText}
+                section={article.sectionName}
+                image={article.fields.thumbnail}
+              />
+            );
+          })}
         </main>
       </React.Fragment>
     );
